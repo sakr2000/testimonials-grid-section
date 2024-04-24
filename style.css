@@ -71,18 +71,25 @@ main {
   font-size: 12px;
 }
 
-.grid-item-content h3 {
+.grid-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
   color: hsl(0, 0%, 100%);
+}
+.grid-item-content h3 {
   font-weight: 600;
   font-size: 1.5rem;
-  line-height: 1.4;
+  line-height: 1.2;
   margin-bottom: 16px;
 }
 
 .grid-item-content p {
-  color: hsl(0, 0%, 81%);
+  opacity: 70%;
   font-weight: 500;
-  font-size: 14px;
+  line-height: 1.5;
+  font-size: 0.9rem;
 }
 
 .grid-item-1 {
@@ -102,17 +109,14 @@ main {
   grid-row: span 2;
 }
 
- {
-  color: #000;
-}
 .grid-item-4 {
   background-color: hsl(0, 0%, 100%);
 }
 
-.grid-item-4 .grid-item-header .info,
 .grid-item-3 .grid-item-header .info,
-.grid-item-4 .grid-item-content h3,
-.grid-item-3 .grid-item-content h3 {
+.grid-item-4 .grid-item-header .info,
+.grid-item-3 .grid-item-content,
+.grid-item-4 .grid-item-content {
   color: #000;
 }
 .grid-item-5 {
@@ -120,19 +124,50 @@ main {
   grid-column: 2 / 4;
 }
 
-.grid-item-5 .grid-item-content h3 {
-  color: hsl(0, 0%, 100%);
-}
-.grid-item-1 .grid-item-content h3 {
-  color: hsl(0, 0%, 100%);
-}
-.grid-item-2 .grid-item-content h3 {
-  color: hsl(0, 0%, 100%);
-}
 .attribution {
-  font-size: 11px;
+  font-size: 12px;
   text-align: center;
+  padding: 10px;
 }
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media screen and (max-width: 1000px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    grid-auto-flow: dense;
+    margin-top: 20px;
+    gap: 25px;
+  }
+  .grid-item-1 {
+    grid-column: 1;
+    background-position: top right 20px;
+  }
+  .grid-item-5 {
+    grid-column: 1;
+    grid-column-start: auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 15px;
+  }
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    padding: 10px;
+    margin-top: 20px;
+    gap: 15px;
+  }
+}
+@media screen and (max-width: 475px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    margin-top: 20px;
+    gap: 15px;
+  }
 }
